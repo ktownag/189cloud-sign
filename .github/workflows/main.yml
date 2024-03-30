@@ -1,38 +1,38 @@
-name: 云盘签到
+名称:云盘签到
 
-on:
-  push:
-    branches: [master]
-  pull_request:
-    branches: [master]
-  schedule:
-    - cron: '30 5,17 * * *'
-  workflow_dispatch:
-  watch:
-    types: started
-permissions: write-all
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    env:
-       TZ: Asia/Shanghai
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: 打印ip地址
-        run: echo "My IP address is $(curl -s ifconfig.me)"
-      - name: Set up Python 3.8
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.8
-      - name: 安装环境
-        run: pip install -r requirements.txt
-      - name: 签到
-        run: |
-          (echo "签到时间 $(date "+%F %T") [![签到状态](https://github.com/y377/189pan/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/y377/189pan/actions/workflows/main.yml)" && python3 ./main.py) | tee >(sed 's/^/- /' > index.md)
-        env:
-          TYYP_USERNAME: ${{ secrets.TYYP_USERNAME }}
-          TYYP_PSW: ${{ secrets.TYYP_PSW }}
-      - name: Git Auto Commit
-        uses: stefanzweifel/git-auto-commit-action@v4.16.0
+在：
+  推：
+    分支：[主]
+  拉请求：
+    分支：[主]
+  浙江：
+    - cron   : '20 8,16 * * *'
+  工作流程_调度：
+  手表：
+    类型：开始
+权限：全部写入
+工作：
+  建造者：
+    运行： ubuntu-latest
+    环境：
+       TZ :亚洲/上海
+    脚步：
+      -名称：结账
+        使用： actions/checkout@v2
+      -名称:打印ip地址
+        run    : echo "我的IP地址是$(curl -s ifconfig.me)"
+      -名称：设置Python 3.8
+        使用： actions/setup-python@v2
+        和：
+          python-版本：3.8
+      -名称：安装环境
+        运行： pip install -rrequirements.txt
+      -姓名：签到
+        运行：|
+          (echo "签到时间 $(date " +%F %T ") [![签到状态](https://github.com/y377/189pan/actions/workflows/main.yml/badge.svg?branch=main )](https://github.com/y377/189pan/actions/workflows/main.yml)" && python3 ./main.py) | tee >(sed 's/^/- /' > index.md)
+        环境：
+          TYYP_USERNAME     : $ {      {秘密.TYYP_USERNAME }      }
+          TYYP_PSW     ： $ {    {秘密.TYYP_PSW }   }
+      -名称： Git自动提交
+        使用： stefanzweifel/git-auto-commit-action@v4.16.0
 
