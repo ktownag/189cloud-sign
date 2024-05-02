@@ -20,6 +20,7 @@ B64MAP = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
 s = requests.Session()
 
 for i in range(len(ty_username)):
+    time.sleep(random.uniform(10, 20))
     print(f'开始执行帐号{i+1}')
 
     def int2char(a):
@@ -67,7 +68,7 @@ for i in range(len(ty_username)):
 
 
     def login(ty_username, ty_password):
-        
+        time.sleep(random.uniform(20, 30))
         url = ""
         urlToken = "https://m.cloud.189.cn/udb/udb_login.jsp?pageId=1&pageKey=default&clientType=wap&redirectURL=https://m.cloud.189.cn/zhuanti/2021/shakeLottery/index.html"
         s = requests.Session()
